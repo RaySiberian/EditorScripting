@@ -87,22 +87,22 @@ public class MyEditor : EditorWindow
             }
             else
             {
-                Debug.Log("Объект не установлен");
+                Debug.Log("Засеть объект");
             }
         }
 
         for (int i = 0; i < pixels.Count; i++)
         {
-            SetDrawPixel(pixels[i]);
+            DrawPixel(pixels[i]);
         }
 
         switch (eventa.type)
         {
             case EventType.MouseDown when eventa.button == 1:
-                SetAnotherColor(colorRight);
+                SetColor(colorRight);
                 break;
             case EventType.MouseDown when eventa.button == 0:
-                SetAnotherColor(colorLeft);
+                SetColor(colorLeft);
                 break;
         }
     }
@@ -115,7 +115,7 @@ public class MyEditor : EditorWindow
         }
     }
 
-    private void SetAnotherColor(Color color)
+    private void SetColor(Color color)
     {
         for (int i = 0; i < pixels.Count; i++)
         {
@@ -127,7 +127,7 @@ public class MyEditor : EditorWindow
         }
     }
 
-    private void SetDrawPixel(Pixel pixel)
+    private void DrawPixel(Pixel pixel)
     {
         GUI.color = pixel.Color;
         GUI.DrawTexture(pixel.Rect, tex);
